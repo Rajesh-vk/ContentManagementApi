@@ -11,35 +11,35 @@ namespace ContentApi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly IMongoRepository<Person> _peopleRepository;
+        //private readonly IMongoRepository<Person> _peopleRepository;
 
-        public ValuesController(IMongoRepository<Person> peopleRepository)
-        {
-            _peopleRepository = peopleRepository;
-        }
+        //public ValuesController(IMongoRepository<Person> peopleRepository)
+        //{
+        //    _peopleRepository = peopleRepository;
+        //}
 
 
         // GET api/    [HttpPost("registerPerson")]
-        public async Task AddPerson(string firstName, string lastName)
-        {
-            var person = new Person()
-            {
-                FirstName = "John",
-                LastName = "Doe"
-            };
+        //public async Task AddPerson(string firstName, string lastName)
+        //{
+        //    var person = new Person()
+        //    {
+        //        FirstName = "John",
+        //        LastName = "Doe"
+        //    };
 
-            await _peopleRepository.InsertOneAsync(person);
-        }
+        //    await _peopleRepository.InsertOneAsync(person);
+        //}
 
-        [HttpGet("getPeopleData")]
-        public IEnumerable<string> GetPeopleData()
-        {
-            var people = _peopleRepository.FilterBy(
-                filter => filter.FirstName != "test",
-                projection => projection.FirstName
-            );
-            return people;
-        }
+        //[HttpGet("getPeopleData")]
+        //public IEnumerable<string> GetPeopleData()
+        //{
+        //    var people = _peopleRepository.FilterBy(
+        //        filter => filter.FirstName != "test",
+        //        projection => projection.FirstName
+        //    );
+        //    return people;
+        //}
 
 
         [HttpGet]

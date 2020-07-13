@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentApi", "ContentApi\ContentApi.csproj", "{EC75FC75-9626-41F4-86A5-AEF0E03DE6BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentApi", "ContentApi\ContentApi.csproj", "{EC75FC75-9626-41F4-86A5-AEF0E03DE6BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{A194E68D-E075-4C7B-9C05-E11386E0509A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{A194E68D-E075-4C7B-9C05-E11386E0509A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
