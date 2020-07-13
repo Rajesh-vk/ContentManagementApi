@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using BLLayer.Implementation;
+using BLLayer.Interface;
 
 namespace ContentApi
 {
@@ -31,6 +33,7 @@ namespace ContentApi
             services.AddSingleton<IMongoDbSettings>(serviceProvider =>
                 serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
 
+            services.AddScoped(typeof(IUserBL), typeof(UserBL));
 
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
 
