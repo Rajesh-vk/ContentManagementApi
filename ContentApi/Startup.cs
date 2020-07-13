@@ -37,7 +37,7 @@ namespace ContentApi
 
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
 
-
+            services.AddMvc();
 
 
         }
