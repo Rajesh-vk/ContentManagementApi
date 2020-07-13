@@ -3,6 +3,7 @@ using DataAccessLayer.Entity;
 using DataAccessLayer.InterFace;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,25 +19,35 @@ namespace BLLayer.Implementation
         }
 
 
-       
-        public async Task AddPerson(string firstName, string lastName)
-        {
-            var person = new User()
-            {
-                FirstName = "John",
-                LastName = "Doe"
-            };
 
-            await _userRepository.InsertOneAsync(person);
+        public IEnumerable<User> GetAll()
+        {
+            return _userRepository.AsQueryable().ToList<User>();
+
         }
 
-        public IEnumerable<string> GetPeopleData()
+        public User GetById(string id)
         {
-            var people = _userRepository.FilterBy(
-                filter => filter.FirstName != "test",
-                projection => projection.FirstName
-            );
-            return people;
+            return _userRepository.FindById(id);
+
+        }
+
+        public void InsertUser(User userDetails)
+        {
+            _userRepository.InsertOne(userDetails);
+
+        }
+
+        public void UpdateUser(User userDetails)
+        {
+            _userRepository.ReplaceOne(userDetails);
+
+        }
+
+        public void DeleteUser(string id)
+        {
+            _userRepository.DeleteById(id);
+
         }
 
     }
