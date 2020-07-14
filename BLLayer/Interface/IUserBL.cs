@@ -11,7 +11,7 @@ namespace BLLayer.Interface
         IEnumerable<User> GetAll();
         User GetById(string id);
         void InsertUser(User userDetails);
-        void UpdateUser(User userDetails);
+        void UpdateUser(string id,User userDetails);
         void DeleteUser(string id);
     }
 }

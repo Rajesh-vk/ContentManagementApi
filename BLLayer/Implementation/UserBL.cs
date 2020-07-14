@@ -1,6 +1,7 @@
 ﻿using BLLayer.Interface;
 using DataAccessLayer.Entity;
 using DataAccessLayer.InterFace;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,8 +39,10 @@ namespace BLLayer.Implementation
 
         }
 
-        public void UpdateUser(User userDetails)
+        public void UpdateUser(string id,User userDetails)
         {
+            var objectId = new ObjectId(id);
+            userDetails.Id = objectId;
             _userRepository.ReplaceOne(userDetails);
 
         }

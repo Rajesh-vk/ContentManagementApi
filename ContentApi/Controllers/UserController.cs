@@ -59,9 +59,9 @@ namespace ContentApi.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put([FromBody] User userDetails)
+        public void Put(string id,[FromBody] User userDetails)
         {
-            _userBL.UpdateUser(userDetails);
+            _userBL.UpdateUser(id,userDetails);
         }
 
         // DELETE api/values/5
