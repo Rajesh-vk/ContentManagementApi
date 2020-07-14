@@ -78,5 +78,26 @@ namespace ContentApi.Controllers
 
             return Ok();
         }
+
+        [HttpPost]
+        [Route("GetToken")]
+        public IActionResult GetToken([FromBody]User userParam)
+        {
+            IActionResult response = Unauthorized();
+            var user = _userBL.AuthenticateUser(userParam.Username, userParam.Password);
+
+            if (user == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            if (user != null)
+            {
+                var tokenString = _userBL.GenerateJSONWebToken(user);
+                response = Ok(new { token = tokenString, expires = DateTime.Now.AddMinutes(120) });
+               
+            }
+
+            return Ok(user);
+        }
+
     }
 }

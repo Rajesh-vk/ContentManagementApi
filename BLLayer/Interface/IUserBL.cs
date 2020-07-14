@@ -13,5 +13,7 @@ namespace BLLayer.Interface
         void InsertUser(User userDetails);
         void UpdateUser(string id,User userDetails);
         void DeleteUser(string id);
+        string GenerateJSONWebToken(User userInfo);
+        User AuthenticateUser(string username, string password);
     }
 }
