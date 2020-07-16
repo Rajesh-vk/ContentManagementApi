@@ -93,7 +93,8 @@ namespace ContentApi.Controllers
             {
                 var tokenString = _userBL.GenerateJSONWebToken(user);
                 response = Ok(new { token = tokenString, expires = DateTime.Now.AddMinutes(120) });
-               
+                user.Token = tokenString;
+                user.expires = DateTime.Now.AddMinutes(120);
             }
 
             return Ok(user);

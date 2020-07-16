@@ -3,6 +3,7 @@ using DataAccessLayer.Entity;
 using DataAccessLayer.InterFace;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Model.Model;
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,7 @@ namespace BLLayer.Implementation
             _userRepository.DeleteById(id);
 
         }
-        public string GenerateJSONWebToken(User userInfo)
+        public string GenerateJSONWebToken(AuthenticateModel userInfo)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -79,13 +80,17 @@ namespace BLLayer.Implementation
         }
 
 
-        public User AuthenticateUser(string username, string password)
+        public AuthenticateModel AuthenticateUser(string username, string password)
         {
-
+            AuthenticateModel authenticateModel;
             var user = _userRepository.AsQueryable().FirstOrDefault(x => x.Username == username && x.Password == password);
+             
             if (user == null)
                 return null;
-            return user;
+            else
+                authenticateModel = new AuthenticateModel(user);
+
+            return authenticateModel;
         }
 
 

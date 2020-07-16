@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Entity;
+using Model.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,7 @@ namespace BLLayer.Interface
         void InsertUser(User userDetails);
         void UpdateUser(string id,User userDetails);
         void DeleteUser(string id);
-        string GenerateJSONWebToken(User userInfo);
-        User AuthenticateUser(string username, string password);
+        string GenerateJSONWebToken(AuthenticateModel userInfo);
+        AuthenticateModel AuthenticateUser(string username, string password);
     }
 }

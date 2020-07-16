@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Utility\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
-    <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
 
 </Project>
