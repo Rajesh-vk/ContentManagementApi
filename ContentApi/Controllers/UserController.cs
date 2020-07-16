@@ -6,6 +6,7 @@ using BLLayer.Interface;
 using DataAccessLayer.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Model.Utility;
 
 namespace ContentApi.Controllers
 {
@@ -53,7 +54,7 @@ namespace ContentApi.Controllers
 
             _userBL.InsertUser(userDetails);
 
-            return CreatedAtAction("Get", new { id = userDetails.Id }, userDetails);
+            return CreatedAtAction("Get", new { id = userDetails.Id }, userDetails.WithoutPassword());
 
         }
 

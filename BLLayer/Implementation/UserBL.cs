@@ -4,6 +4,7 @@ using DataAccessLayer.InterFace;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Model.Model;
+using Model.Utility;
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
@@ -31,14 +32,13 @@ namespace BLLayer.Implementation
 
         public IEnumerable<User> GetAll()
         {
-            return _userRepository.AsQueryable().ToList<User>();
+            return _userRepository.AsQueryable().ToList<User>().WithoutPasswords();
 
         }
 
         public User GetById(string id)
         {
-            return _userRepository.FindById(id);
-
+            return _userRepository.FindById(id).WithoutPassword();
         }
 
         public void InsertUser(User userDetails)
