@@ -49,8 +49,10 @@ namespace BLLayer.Implementation
 
         public void UpdateUser(string id, User userDetails)
         {
+            var user = _userRepository.FindById(id);
             var objectId = new ObjectId(id);
             userDetails.Id = objectId;
+            userDetails.Password = user.Password;
             _userRepository.ReplaceOne(userDetails);
 
         }
